@@ -35,27 +35,13 @@ body{
     padding-top: 11px;
 }
 
-
-
-/* css for accordian */
-.accordian-box .contain-para{
-    max-height: 0;
-    display: none;
-}
-.accordian-box .contain-para.custom-para{
-    max-height: max-content;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-    display: block;
-    padding-top: 11px;
-    font-size: 15px;
-}
 .accordian-box h3{
-    position: relative;
     cursor: pointer;
+    position: relative;
     font-weight: 500;
 }
-.accordian-box h3::after{
+
+.accordian-box h3::after {
     content: '';
     position: absolute;
     background-image: url(./imgs/plus-solid.svg);
@@ -66,16 +52,35 @@ body{
     background-size: 100%;
 }
 
-.accordian-box h3.custom_icon::after{
-    background-image: url('./imgs/minus-solid.svg');
+.accordian-box .contain-para{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .1s ease-out, opacity .1s linear;
+    opacity: 0;
+    font-weight: 300;
+}
+
+.accordian-box h3:hover ~ .contain-para{
+    max-height: 300px;
+    overflow: auto;
+    transition: max-height .3s ease-in,opacity .3s linear;
+    opacity: 1;
+    padding-top: 6px;
 }
 
 
-/* media queries */
-@media only screen and (max-width: 700px) {
-    
+.accordian-box h3.custom_icon::after {
+    background-image: url(./imgs/minus-solid.svg);
+}
+
+@media only screen and (max-width: 600px){
+    body{
+        background-image: url('./imgs/background-accordian-mb.jpg');
+    }
     .accordian-box h3::after{
-        width: 4%;
-        height: 80%;
+        width: 5%;
+    }
+    .accordian-box h3{
+        font-size: 18px;
     }
 }
